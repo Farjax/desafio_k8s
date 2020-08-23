@@ -7,8 +7,3 @@ steps:
   args: ['test']
 
 
-- id: "Rodando o programa"
-  name: "gcr.io/cloud-builders/go"
-  dir: 'go/src/greeting'
-  env: ["GOPATH=."]
-  args: ['run','servergo.go']
