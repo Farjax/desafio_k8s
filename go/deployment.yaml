@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: go-app
-          image: farjax/desafio_k8s
+          image: img-app-deployment
           ports:
             - containerPort: 8000
