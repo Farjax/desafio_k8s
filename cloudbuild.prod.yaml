@@ -20,15 +20,15 @@ steps:
   args:
     - '-c'
     - |
-      sed 's#img-app-deployment#gcr.io/$PROJECT_ID/app-go-cd:$SHORT_SHA#g' k8s/app/deployment.yaml > k8s/app/deployment-new.yaml;
-      cat k8s/app/deployment-new.yaml;
+      sed 's#img-app-deployment#gcr.io/$PROJECT_ID/app-go-cd:$SHORT_SHA#g' go/deployment.yaml > go/deployment-new.yaml;
+      cat go/deployment-new.yaml;
 
 - id: 'deploying k8s'
   name: "gcr.io/cloud-builders/kubectl"
   args:
     - 'apply'
     - '-f'
-    - 'k8s/app/deployment-new.yaml'
+    - 'go/deployment-new.yaml'
   env:
   - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
   - 'CLOUDSDK_CONTAINER_CLUSTER=cluster-docker-laravel'
