@@ -1,0 +1,18 @@
+FROM golang:1.12-alpine as builder
+
+WORKDIR /desafio/src/greeting
+
+COPY . .
+ 
+RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w"  go/src/greeting/servergo.go
+RUN pwd
+RUN ls
+
+FROM scratch
+WORKDIR /desafio/src/greeting
+
+COPY --from=builder /desafio/src/greeting/servergo .
+
+
+
+CMD ["./servergo"]
